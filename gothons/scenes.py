@@ -27,6 +27,12 @@ class Death(Scene) :
 
 class CentralCorridor(Scene) :
 
+    @staticmethod
+    def combat_system():
+        print("do you have the balls to fight ?")
+        next = input("> ")
+        return next
+
     def enter(self) :
 
         print("The gothons of plant percal #25 have invaded your ship and destroyed")
@@ -53,15 +59,18 @@ class CentralCorridor(Scene) :
             return 'death'
 
         elif action == "dodge!" :
+            ans = CentralCorridor.combat_system()
+            if ans == "yes" :
+                return "laser_weapon_armory"
+            else :
+                print("""Like a world calss boxer you dodge, weave, slip and slide right
+                as the Gothon's blaster cranks a laser past youe head.
+                In the middle of your artful dodge your foot slips and you
+                bang your head in the metal wall and pass out.
+                You wake up shortly after only to die as the Gothon stomps on
+                your head and eats you.""")
 
-            print("""Like a world calss boxer you dodge, weave, slip and slide right
-            as the Gothon's blaster cranks a laser past youe head.
-            In the middle of your artful dodge your foot slips and you
-            bang your head in the metal wall and pass out.
-            You wake up shortly after only to die as the Gothon stomps on
-            your head and eats you.""")
-
-            return 'death'
+                return 'death'
 
         elif action == "tell a joke" :
 
@@ -79,6 +88,8 @@ class CentralCorridor(Scene) :
             print("Does NOT COMPUTE!")
 
             return('central_corridor')
+
+
 
 class LaserWeaponArmory(Scene) :
 
